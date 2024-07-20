@@ -6,7 +6,7 @@ class Item_Category(models.Model):
     slug = models.SlugField(max_length=200,unique=True)
     class Meta:
         ordering =['name']
-        index = [models.Index(fields=['name']),]
+        indexes = [models.Index(fields=['name']),]
         verbose_name = 'Item_Category'
         verbose_name_plural = 'categories'
 def __str__(self):
@@ -31,7 +31,7 @@ class Item(models.Model):
     updated = models.DateTimeField(auto_now=True)
     #price = models.DecimalField(max_digits=10,decimal_places=2)
     class Meta:
-        odering =['name']
+        ordering =['name']
         indexes = [models.Index(fields=['id','slug']),
                    models.Index(fields=['name']),
                    models.Index(fields=['-created']),
@@ -56,3 +56,11 @@ class Claim(models.Model):
 
     def __str__(self):
         return f"Claim for {self.item.title} by {self.claimant.username}"
+    
+
+
+class Report(models.Model):
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name='reports')
+    reporter = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_reported = models.DateTimeField(auto_now_add=True)
+    additional_info = models.TextField(blank=True)
