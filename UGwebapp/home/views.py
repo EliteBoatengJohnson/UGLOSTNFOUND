@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Item, Item_Category, Claim
-#from .forms import ItemForm, ClaimForm
+from .forms import ItemForm, ClaimForm
 
 def home(request):
     categories = Item_Category.objects.all()

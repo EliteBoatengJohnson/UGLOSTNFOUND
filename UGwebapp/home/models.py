@@ -30,7 +30,8 @@ class Item(models.Model):
     description = models.TextField(blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    reporter = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.SE,related_name='report')
+   # reporter = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reported_items')
+    reporter = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.SET_NULL,blank=True,null=True, related_name='reported_items')
     #price = models.DecimalField(max_digits=10,decimal_places=2)
     class Meta:
         ordering =['-created']
