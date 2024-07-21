@@ -7,7 +7,7 @@ from .models import Item_Category, Item, Claim
 class Item_CategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug']
     prepopulated_fields = {'slug': ('name',)}
-
+#
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug', 'status', 'created', 'updated']
