@@ -1,3 +1,4 @@
+{%load static%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,8 +16,8 @@
             <img src="{% static 'images/ug_logo.png' %}" alt="University of Ghana Logo">
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'item_list' %}">Lost Items</a></li>
-                <li><a href="{% url 'report_item' %}">Found Item</a></li>
+                <li><a href="{% url 'Item' %}">Lost Items</a></li>
+                <li><a href="{% url 'report' %}">Found Item</a></li>
                 <li><a href="{% url 'login' %}">Login</a></li>
             </ul>
         </nav>
