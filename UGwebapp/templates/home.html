@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %} 
+<main>
+        <h1>Recently Lost Items Report</h1>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Search for an item...">
+            <button>Search</button>
+        </div>
+
+        <div class="category-dropdown">
+            <select>
+                <option value="">Select Category</option>
+                {% for category in Item_Category %}
+                    <option value="{{ category.slug }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="item-grid">
+            {% for item in Item%}
+                <div class="item-card">
+                    <img src="{{ item.image.url }}" alt="{{ item.name }}">
+                    <h3>{{ item.name }}</h3>
+                    <p>{{ item.description|truncatewords:10 }}</p>
+                    <p>Found: {{ item.date_found|date:"d/m/Y" }}</p>
+                    <a href="{% url 'item_detail' item.id %}" class="claim-btn">Claim</a>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+    {% endblock %}
+
+

@@ -5,7 +5,7 @@ from .forms import ItemForm, ClaimForm
 
 def home(request):
     categories = Item_Category.objects.all()
-    recent_items = Item.objects.filter(status='found').order_by('-date_found')[:10]
+    recent_items = Item.objects.filter(status='found').order_by('-created')[:10]
     return render(request, 'home/home.html', {'categories': categories, 'recent_items': recent_items})
 
 def item_list(request, category_slug=None):

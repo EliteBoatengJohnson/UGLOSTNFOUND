@@ -23,6 +23,7 @@ class Item(models.Model):
         ('claimed', 'Claimed'),]
     category =models.ForeignKey(Item_Category,related_name='Item', on_delete=models.CASCADE)
     name =models.CharField(max_length=200)
+    date_found = models.DateTimeField(blank=True, null=True)
     slug = models.SlugField(max_length=200)
     location = models.CharField(max_length=100)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='lost')
